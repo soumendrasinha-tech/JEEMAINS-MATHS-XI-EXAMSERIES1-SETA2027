@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soumendra Sir's Biology Classes - JEE MAINS XI MATHS CBT</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- html2canvas CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- MathJax CDN for LaTeX Math Formatting -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        
+        /* Security Watermark for photo protection */
+        .watermark-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            background: repeating-linear-gradient(
+                -45deg,
+                rgba(255, 255, 255, 0.015),
+                rgba(255, 255, 255, 0.015) 100px,
+                rgba(0, 0, 0, 0.015) 100px,
+                rgba(0, 0, 0, 0.015) 200px
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.85;
+        }
+        .watermark-text {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.04);
+            transform: rotate(-30deg);
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+        /* Dot Status Indicators */
+        .dot-status {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .dot-answered { background-color: #10b981; color: white; }
+        .dot-not-answered { background-color: #ef4444; color: white; }
+        .dot-marked { background-color: #a855f7; color: white; }
+        .dot-marked-answered { background-color: #3b82f6; color: white; border: 2px solid #a855f7; }
+        .dot-not-visited { background-color: #475569; color: #cbd5e1; }
+        .dot-current { ring: 3px; ring-color: #38bdf8; transform: scale(1.15); }
+
+        /* Animation utilities */
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-900 text-slate-100 overflow-x-hidden" oncontextmenu="return false;">
+
+    <div class="watermark-overlay">
+        <div class="watermark-text" id="watermarkDynamic">SOUMENDRA SIR'S BIOLOGY CLASSES • 8910587106 • OFFICIAL CBT</div>
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
+    <div id="app" class="min-h-screen flex flex-col">
+
+        <!-- SCREEN 1: CANDIDATE LOGIN & VERIFICATION -->
+        <div id="loginScreen" class="min-h-screen flex items-center justify-center p-4 bg-slate-950 fade-in">
+            <div class="max-w-xl w-full bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+                <div class="absolute -top-24 -right-24 w-48 h-48 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="text-center border-b border-slate-800 pb-5 mb-6">
+                    <h1 class="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400">
+                        Soumendra Sir's Biology Classes
+                    </h1>
+                    <p class="text-slate-400 text-sm font-medium mt-1"><i class="fa-solid fa-phone text-emerald-400 mr-1"></i> Helpline: 8910587106</p>
+                    <div class="mt-3 inline-block px-3 py-1 bg-blue-950/80 border border-blue-800/60 rounded-full text-xs font-semibold text-blue-300">
+                        JEE MAINS XI MATHS EXAM SERIES 1 SET A
+                    </div>
+                </div>
+
+                <!-- Syllabus & Topic Briefing -->
+                <div class="bg-slate-950/60 rounded-xl p-4 mb-6 border border-slate-800 text-xs sm:text-sm text-slate-300 space-y-2">
+                    <div class="font-bold text-amber-400 text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-book-open"></i> Test Topics & Sub-topics:
+                    </div>
+                    <p class="text-slate-300 leading-relaxed">
+                        <span class="text-blue-400 font-semibold">SETS, RELATIONS AND FUNCTIONS:</span> Sets & representation, Union, Intersection, Complement & algebraic properties, Power set $P(A)$, Relations, Reflexive, Symmetric, Transitive & Equivalence Relations, Functions, One-One (Injective), Onto (Surjective), Into, Composition of Functions $f(g(x))$.
+                    </p>
+                    <div class="grid grid-cols-2 gap-2 mt-3 text-xs bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                        <div><strong class="text-slate-400">Questions:</strong> 25 (20 MCQ + 5 Num)</div>
+                        <div><strong class="text-slate-400">Total Marks:</strong> 100</div>
+                        <div><strong class="text-slate-400">Time Limit:</strong> 60 Minutes</div>
+                        <div><strong class="text-slate-400">Marking:</strong> +4 Correct | -1 Wrong</div>
+                    </div>
+                </div>
+
+                <!-- Verification Form -->
+                <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Candidate Full Name</label>
+                        <input type="text" id="candidateName" required placeholder="Enter your full name" 
+                            class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3.5 py-2.5 text-slate-100 text-sm focus:outline-none focus:border-blue-500 transition">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Date Password (DDMMYYYY)</label>
+                            <input type="password" id="examPassword" required placeholder="e.g. 11102026" maxlength="8"
+                                class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3.5 py-2.5 text-slate-100 text-sm focus:outline-none focus:border-blue-500 transition">
+                            <span class="text-[10px] text-slate-500 mt-1 block">Current Date Format (e.g. 11102026)</span>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Security Captcha</label>
+                            <div class="flex items-center gap-2">
+                                <div id="captchaBox" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-center text-blue-300 font-mono font-bold text-sm tracking-wider w-1/2">
+                                    5 + 3 = ?
+                                </div>
+                                <input type="number" id="captchaInput" required placeholder="Ans" 
+                                    class="w-1/2 bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 text-sm focus:outline-none focus:border-blue-500 transition">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-red-950/30 border border-red-800/40 rounded-lg text-xs text-red-300 space-y-1">
+                        <p class="font-bold flex items-center gap-1.5"><i class="fa-solid fa-triangle-exclamation"></i> Security Rules:</p>
+                        <ul class="list-disc list-inside space-y-0.5 text-[11px] text-red-200/80">
+                            <li>Fullscreen mode will be forced upon starting the exam.</li>
+                            <li>Tab switching or exiting fullscreen > 3 times auto-submits exam.</li>
+                            <li>Copying, right-clicking & screen capturing are strictly disabled.</li>
+                        </ul>
+                    </div>
+
+                    <button type="submit" 
+                        class="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-blue-900/30 transition transform active:scale-95 text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-lock-open"></i> Authenticate & Start CBT Test
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- SCREEN 2: MAIN CBT EXAM INTERFACE -->
+        <div id="cbtScreen" class="hidden flex-1 flex flex-col min-h-screen bg-slate-950">
+            <!-- Top Navigation Bar -->
+            <header class="bg-slate-900 border-b border-slate-800 px-4 py-3 flex flex-wrap items-center justify-between gap-3 sticky top-0 z-40 shadow-md">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 font-bold">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-sm sm:text-base font-bold text-slate-100 leading-tight">Soumendra Sir's Biology Classes</h2>
+                        <p class="text-xs text-blue-400 font-semibold">JEE MAINS XI MATHS EXAM SERIES 1 SET A</p>
+                    </div>
+                </div>
+
+                <!-- Timer & Info -->
+                <div class="flex items-center gap-4">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-1.5 flex items-center gap-2.5">
+                        <i class="fa-solid fa-clock text-amber-400 animate-pulse text-sm"></i>
+                        <div>
+                            <div class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Time Remaining</div>
+                            <div id="timerDisplay" class="font-mono font-extrabold text-base text-amber-300">01:00:00</div>
+                        </div>
+                    </div>
+                    <button onclick="confirmSubmitExam()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-lg transition shadow-md flex items-center gap-1.5">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Exam
+                    </button>
+                </div>
+            </header>
+
+            <!-- Main Test Area (Questions Left, Palette Right) -->
+            <div class="flex-1 flex flex-col md:flex-row overflow-hidden">
+                <!-- Question Container -->
+                <main class="flex-1 flex flex-col p-4 sm:p-6 overflow-y-auto bg-slate-950">
+                    
+                    <!-- Section Selector Tabs -->
+                    <div class="flex items-center gap-2 mb-4 border-b border-slate-800 pb-3">
+                        <button id="tabSecA" onclick="switchSection('A')" class="px-4 py-2 rounded-lg font-bold text-xs transition flex items-center gap-2 bg-blue-600 text-white shadow-lg">
+                            <i class="fa-solid fa-list-check"></i> Section A (MCQs: 1-20)
+                        </button>
+                        <button id="tabSecB" onclick="switchSection('B')" class="px-4 py-2 rounded-lg font-bold text-xs transition flex items-center gap-2 bg-slate-800 text-slate-400 hover:text-slate-200">
+                            <i class="fa-solid fa-arrow-down-1-9"></i> Section B (Numerical: 21-25)
+                        </button>
+                        <div class="ml-auto text-xs text-slate-400 hidden sm:block">
+                            Marks: <span class="text-emerald-400 font-bold">+4</span> | <span class="text-red-400 font-bold">-1</span>
+                        </div>
+                    </div>
+
+                    <!-- Question Header & Content -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                                    <span id="qNumberBadge" class="bg-blue-950 text-blue-300 border border-blue-800/80 px-2.5 py-1 rounded-md">Question #1</span>
+                                    <span id="qTypeBadge" class="text-slate-400">Section A • Single Correct MCQ</span>
+                                </div>
+                                <span class="text-xs text-amber-400 font-medium" id="subTopicBadge">Topic: Sets</span>
+                            </div>
+
+                            <!-- Question Text -->
+                            <div id="qText" class="text-slate-100 text-sm sm:text-base leading-relaxed mb-6 font-medium">
+                                Loading Question Text...
+                            </div>
+
+                            <!-- Options Container (MCQ) -->
+                            <div id="mcqOptionsContainer" class="space-y-3">
+                                <!-- Dynamic Options -->
+                            </div>
+
+                            <!-- Numerical Keypad/Input Container (Section B) -->
+                            <div id="numericalContainer" class="hidden mt-4 bg-slate-950 border border-slate-800 rounded-xl p-4">
+                                <label class="block text-xs font-semibold text-slate-400 mb-2">Enter Numerical Answer (Integer or Decimal):</label>
+                                <div class="flex items-center gap-3">
+                                    <input type="text" id="numAnswerInput" placeholder="e.g. 12 or -4.5" readonly
+                                        class="bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-emerald-400 font-mono font-bold text-lg w-full max-w-xs focus:outline-none">
+                                    <button onclick="clearNumericalAnswer()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs rounded-lg font-semibold transition">
+                                        Clear
+                                    </button>
+                                </div>
+                                <!-- Virtual Keypad -->
+                                <div class="grid grid-cols-4 gap-2 max-w-xs mt-3">
+                                    <button onclick="pressKey('1')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded font-bold">1</button>
+                                    <button onclick="pressKey('2')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded font-bold">2</button>
+                                    <button onclick="pressKey('3')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded font-bold">3</button>
+                                    <button onclick="pressKey('-')" class="bg-slate-800 hover:bg-slate-700 text-amber-400 py-2 rounded font-bold">-</button>
+                                    <button onclick="pressKey('4')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded font-bold">4</button>
+                                    <button onclick="pressKey('5')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded font-bold">5</button>
+                                    <button onclick="pressKey('6')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded font-bold">6</button>
+                                    <button onclick="pressKey('.')" class="bg-slate-800 hover:bg-slate-700 text-amber-400 py-2 rounded font-bold">.</button>
+                                    <button onclick="pressKey('7')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded font-bold">7</button>
+                                    <button onclick="pressKey('8')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded font-bold">8</button>
+                                    <button onclick="pressKey('9')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded font-bold">9</button>
+                                    <button onclick="pressKey('0')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded font-bold">0</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Controls Footer -->
+                        <div class="flex flex-wrap items-center justify-between gap-3 mt-6 pt-4 border-t border-slate-800">
+                            <div class="flex items-center gap-2">
+                                <button onclick="saveAndNext()" class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition shadow-lg flex items-center gap-1.5">
+                                    <i class="fa-solid fa-check"></i> Save & Next
+                                </button>
+                                <button onclick="markForReviewAndNext()" class="px-4 py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs rounded-xl transition shadow-lg flex items-center gap-1.5">
+                                    <i class="fa-solid fa-bookmark"></i> Mark for Review
+                                </button>
+                                <button onclick="clearResponse()" class="px-3 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 text-xs rounded-xl transition">
+                                    Clear Response
+                                </button>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button onclick="navigateQuestion(-1)" class="px-3.5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl transition">
+                                    <i class="fa-solid fa-chevron-left mr-1"></i> Prev
+                                </button>
+                                <button onclick="navigateQuestion(1)" class="px-3.5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl transition">
+                                    Next <i class="fa-solid fa-chevron-right ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- Interactive Colorful Dot Status Palette Sidebar -->
+                <aside class="w-full md:w-80 bg-slate-900 border-t md:border-t-0 md:border-l border-slate-800 p-4 flex flex-col justify-between overflow-y-auto">
+                    <div>
+                        <!-- Candidate Tag -->
+                        <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 mb-4 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center font-bold text-white text-sm shadow">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <div class="overflow-hidden">
+                                <div id="displayCandidateName" class="text-xs font-bold text-slate-200 truncate">Candidate Name</div>
+                                <div class="text-[10px] text-emerald-400 flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Live CBT Session
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Legend Status -->
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Question Palette Legend</div>
+                        <div class="grid grid-cols-2 gap-2 text-[11px] mb-4 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                            <div class="flex items-center gap-2">
+                                <span class="dot-status dot-answered text-[10px] w-5 h-5">✓</span>
+                                <span class="text-slate-300">Answered</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="dot-status dot-not-answered text-[10px] w-5 h-5">✕</span>
+                                <span class="text-slate-300">Not Answered</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="dot-status dot-marked text-[10px] w-5 h-5">★</span>
+                                <span class="text-slate-300">Marked Review</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="dot-status dot-not-visited text-[10px] w-5 h-5">•</span>
+                                <span class="text-slate-300">Not Visited</span>
+                            </div>
+                        </div>
+
+                        <!-- Section Palette Header -->
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold text-slate-300" id="paletteSectionTitle">Section A Questions</span>
+                            <span class="text-[11px] text-slate-500" id="paletteCount">0 / 20</span>
+                        </div>
+
+                        <!-- Colorful Dots Grid -->
+                        <div id="paletteDotsGrid" class="grid grid-cols-5 gap-2.5 p-3 bg-slate-950 rounded-xl border border-slate-800 max-h-60 overflow-y-auto">
+                            <!-- Dynamic Dots Rendered Here -->
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-slate-800 text-center">
+                        <p class="text-[10px] text-slate-500">Soumendra Sir's Biology Classes • Math Test Series</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <!-- SCREEN 3: FEEDBACK REPORT & GRAPHICAL SCORECARD -->
+        <div id="reportScreen" class="hidden min-h-screen bg-slate-950 p-4 sm:p-8 fade-in">
+            <div class="max-w-4xl mx-auto space-y-6">
+                
+                <!-- Scorecard Wrapper to Capture as Image -->
+                <div id="scorecardCaptureArea" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden text-slate-100">
+                    
+                    <!-- Header -->
+                    <div class="flex flex-col sm:flex-row items-center justify-between border-b border-slate-800 pb-6 mb-6 gap-4">
+                        <div>
+                            <span class="px-3 py-1 bg-blue-950 border border-blue-800 rounded-full text-xs font-bold text-blue-300">
+                                OFFICIAL CBT TEST REPORT
+                            </span>
+                            <h1 class="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300 mt-2">
+                                Soumendra Sir's Biology Classes
+                            </h1>
+                            <p class="text-xs text-slate-400 font-medium">Helpline: 8910587106 | Exam Series 1 Set A</p>
+                        </div>
+                        <div class="text-center sm:text-right bg-slate-950 border border-slate-800 px-4 py-3 rounded-xl">
+                            <div class="text-[10px] text-slate-500 uppercase font-bold">Candidate Name</div>
+                            <div id="reportCandidateName" class="text-base font-bold text-slate-100">Candidate</div>
+                            <div class="text-[10px] text-emerald-400 mt-0.5" id="reportDate">Oct 2026</div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Score Cards -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                        <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl text-center">
+                            <div class="text-[10px] text-slate-400 font-bold uppercase">Total Score</div>
+                            <div id="scoreTotal" class="text-2xl sm:text-3xl font-extrabold text-amber-400 mt-1">0 / 100</div>
+                        </div>
+                        <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl text-center">
+                            <div class="text-[10px] text-slate-400 font-bold uppercase">Accuracy %</div>
+                            <div id="scoreAccuracy" class="text-2xl sm:text-3xl font-extrabold text-blue-400 mt-1">0%</div>
+                        </div>
+                        <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl text-center">
+                            <div class="text-[10px] text-slate-400 font-bold uppercase">Correct</div>
+                            <div id="scoreCorrect" class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-1">0</div>
+                        </div>
+                        <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl text-center">
+                            <div class="text-[10px] text-slate-400 font-bold uppercase">Incorrect</div>
+                            <div id="scoreIncorrect" class="text-2xl sm:text-3xl font-extrabold text-rose-400 mt-1">0</div>
+                        </div>
+                    </div>
+
+                    <!-- Chart & Weak Topics Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- Chart Card -->
+                        <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl flex flex-col items-center justify-center">
+                            <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Performance Visual Breakdown</h3>
+                            <div class="w-48 h-48">
+                                <canvas id="performanceChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Diagnostic & Weak Areas -->
+                        <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-bullseye"></i> Diagnostic Feedback & Focus Areas
+                                </h3>
+                                <p class="text-xs text-slate-400 mb-3">Based on your CBT response evaluation, pay extra attention to these identified concepts:</p>
+                                <div id="weakAreasList" class="space-y-2 text-xs">
+                                    <!-- Dynamic Weak Areas -->
+                                </div>
+                            </div>
+                            <div class="mt-4 p-2.5 bg-blue-950/40 border border-blue-800/40 rounded-lg text-[11px] text-blue-300">
+                                💡 <strong>Teacher Note:</strong> Revise algebraic properties of sets and function compositions for maximum JEE score improvement.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center text-[10px] text-slate-500 border-t border-slate-800 pt-3">
+                        Verified CBT System • Soumendra Sir's Biology Classes • Contact: 8910587106
+                    </div>
+                </div>
+
+                <!-- Export & Share Actions -->
+                <div class="flex flex-wrap items-center justify-between gap-4 bg-slate-900 border border-slate-800 p-4 rounded-2xl">
+                    <button onclick="downloadReportImage()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl transition shadow-lg flex items-center gap-2">
+                        <i class="fa-solid fa-download"></i> Download Image Scorecard (JPG)
+                    </button>
+                    <button onclick="sendToWhatsApp()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl transition shadow-lg flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp"></i> Send Marks to Sir (8910587106)
+                    </button>
+                    <button onclick="toggleSolutionsModal()" class="px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold rounded-xl transition shadow-lg flex items-center gap-2">
+                        <i class="fa-solid fa-key"></i> View Solutions & Answer Key
+                    </button>
+                </div>
+
+                <!-- Solutions Accordion Modal / Container -->
+                <div id="solutionsContainer" class="hidden bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl space-y-4">
+                    <h2 class="text-lg font-bold text-amber-400 border-b border-slate-800 pb-3 flex items-center justify-between">
+                        <span><i class="fa-solid fa-book text-amber-400 mr-2"></i> Step-by-Step Question Solutions & Explanations</span>
+                        <button onclick="toggleSolutionsModal()" class="text-xs text-slate-400 hover:text-white">Close Solutions ✕</button>
+                    </h2>
+                    <div id="solutionsList" class="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                        <!-- Dynamic Solutions Rendered Here -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        /* State Variables */
+        let candidate = { name: '', date: '' };
+        let activeSection = 'A'; // 'A' or 'B'
+        let currentQuestionIdx = 0; // 0 to 24
+        let timerInterval = null;
+        let timeRemaining = 3600; // 60 mins in sec
+        let tabSwitchViolations = 0;
+        let captchaAns = 0;
+
+        /* User Responses Array (25 questions) */
+        /* Each element: { selectedOption: null / 'A'..'D' / number, status: 'not-visited'|'answered'|'not-answered'|'marked'|'marked-answered' } */
+        let userResponses = [];
+
+        /* Question Bank (25 Unique Unrepeated JEE Mains Standard Questions) */
+        const questionBank = [
+            // SECTION A (20 MCQs)
+            {
+                id: 1, section: 'A', subTopic: 'Sets & Operations',
+                text: 'If $A = \\{x \\in \\mathbb{R} : x^2 - 5x + 6 = 0\\}$ and $B = \\{x \\in \\mathbb{R} : x^2 - 1 = 0\\}$, then $A \\cap B$ is equal to:',
+                options: ['\\(\\{2, 3\\}\\)', '\\(\\{1, -1\\}\\)', '\\(\\emptyset\\)', '\\(\\{1, 2, 3\\}\\)'],
+                correct: 'C',
+                explanation: '$A = \\{2, 3\\}$ and $B = \\{1, -1\\}$. Since there are no common elements between $A$ and $B$, $A \\cap B = \\emptyset$.'
+            },
+            {
+                id: 2, section: 'A', subTopic: 'Power Sets',
+                text: 'If a set $A$ contains $n$ elements, then the total number of non-empty proper subsets of $A$ is equal to:',
+                options: ['\\(2^n - 1\\)', '\\(2^n - 2\\)', '\\(2^{n-1}\\)', '\\(2^n\\)'],
+                correct: 'B',
+                explanation: 'Total subsets $= 2^n$. Excluding the empty set $\\emptyset$ and the set $A$ itself gives $2^n - 2$ non-empty proper subsets.'
+            },
+            {
+                id: 3, section: 'A', subTopic: 'Algebraic Properties of Sets',
+                text: 'For any three sets $A, B,$ and $C$, the symmetric difference $A \\Delta B$ is defined as $(A - B) \\cup (B - A)$. Which of the following is correct?',
+                options: ['\\(A \\Delta B = (A \\cup B) - (A \\cap B)\\)', '\\(A \\Delta B = (A \\cap B) - (A \\cup B)\\)', '\\(A \\Delta B = A \\cup B\\)', '\\(A \\Delta B = A \\cap B\\)'],
+                correct: 'A',
+                explanation: 'The symmetric difference is equivalent to elements belonging to either $A$ or $B$ but not both, i.e., $(A \\cup B) - (A \\cap B)$.'
+            },
+            {
+                id: 4, section: 'A', subTopic: 'Relations & Types',
+                text: 'Let $R$ be a relation on the set of natural numbers $\\mathbb{N}$ defined by $x Ry \\iff x + 2y = 8$. The domain of $R$ is:',
+                options: ['\\(\\{2, 4, 6\\}\\)', '\\(\\{1, 2, 3\\}\\)', '\\(\\{2, 4, 6, 8\\}\\)', '\\(\\{1, 2, 3, 4\\}\\)'],
+                correct: 'A',
+                explanation: '$x = 8 - 2y$. For $x, y \\in \\mathbb{N}$: if $y=1, x=6$; if $y=2, x=4$; if $y=3, x=2$. Thus domain $= \\{2, 4, 6\\}$.'
+            },
+            {
+                id: 5, section: 'A', subTopic: 'Equivalence Relations',
+                text: 'Let $R = \\{(1,1), (2,2), (3,3), (1,2), (2,3), (1,3)\\}$ be a relation on set $S = \\{1, 2, 3\\}$. $R$ is:',
+                options: ['Reflexive and Transitive but not Symmetric', 'An Equivalence Relation', 'Symmetric and Transitive', 'Reflexive and Symmetric'],
+                correct: 'A',
+                explanation: '$R$ contains $(1,1), (2,2), (3,3) \\implies$ Reflexive. $(1,2) \\in R$ but $(2,1) \\notin R \\implies$ Not Symmetric. Transitive holds for all pairs.'
+            },
+            {
+                id: 6, section: 'A', subTopic: 'Types of Functions',
+                text: 'The function $f: \\mathbb{R} \\to \\mathbb{R}$ defined by $f(x) = 2x^3 - 1$ is:',
+                options: ['One-one and Onto (Bijective)', 'Many-one and Onto', 'One-one and Into', 'Many-one and Into'],
+                correct: 'A',
+                explanation: '$f\'(x) = 6x^2 \\ge 0 \\implies$ strictly increasing (One-one). As $x \\to \\pm \\infty$, $f(x) \\to \\pm \\infty \\implies$ Range is $\\mathbb{R}$ (Onto).'
+            },
+            {
+                id: 7, section: 'A', subTopic: 'Domain of Functions',
+                text: 'The domain of the function $f(x) = \\sqrt{\\log_{10}(5x - x^2)/4}$ is:',
+                options: ['\\([1, 4]\\)', '\\((0, 5)\\)', '\\([1, 5]\\)', '\\((1, 4)\\)'],
+                correct: 'A',
+                explanation: 'For square root and log: $(5x - x^2)/4 \\ge 1 \\implies 5x - x^2 \\ge 4 \\implies x^2 - 5x + 4 \\le 0 \\implies x \\in [1, 4]$.'
+            },
+            {
+                id: 8, section: 'A', subTopic: 'Composition of Functions',
+                text: 'If $f(x) = \\frac{x}{x-1}$ for $x \\neq 1$, then $(f \\circ f)(x)$ is equal to:',
+                options: ['\\(x\\)', '\\(\\frac{x}{x+1}\\)', '\\(\\frac{1}{x}\\)', '\\(-x\\)'],
+                correct: 'A',
+                explanation: '$(f \\circ f)(x) = f(f(x)) = \\frac{x/(x-1)}{x/(x-1) - 1} = \\frac{x}{x - (x - 1)} = x$.'
+            },
+            {
+                id: 9, section: 'A', subTopic: 'Set Venn Diagrams',
+                text: 'In a group of 100 students, 60 like Mathematics, 45 like Physics, and 20 like both. How many students like neither?',
+                options: ['15', '25', '10', '20'],
+                correct: 'A',
+                explanation: '$n(M \\cup P) = n(M) + n(P) - n(M \\cap P) = 60 + 45 - 20 = 85$. Neither $= 100 - 85 = 15$.'
+            },
+            {
+                id: 10, section: 'A', subTopic: 'Types of Functions',
+                text: 'Let $f: \\mathbb{R} \\to \\mathbb{R}$ be defined by $f(x) = x^2 + 1$. Then $f$ is:',
+                options: ['Neither One-one nor Onto', 'One-one but not Onto', 'Onto but not One-one', 'Bijective'],
+                correct: 'A',
+                explanation: '$f(1) = f(-1) = 2 \\implies$ Many-one. Range is $[1, \\infty) \\neq \\mathbb{R} \\implies$ Into (not onto).'
+            },
+            {
+                id: 11, section: 'A', subTopic: 'Composition of Functions',
+                text: 'Let $f(x) = x^2$ and $g(x) = \\sin x$. Then $(g \\circ f)(x)$ is equal to:',
+                options: ['\\(\\sin(x^2)\\)', '\\(\\sin^2 x\\)', '\\(x^2 \\sin x\\)', '\\(\\sin(x)\\)'],
+                correct: 'A',
+                explanation: '$(g \\circ f)(x) = g(f(x)) = g(x^2) = \\sin(x^2)$.'
+            },
+            {
+                id: 12, section: 'A', subTopic: 'Relations Count',
+                text: 'The total number of relations from a set $A$ with $m$ elements to a set $B$ with $n$ elements is:',
+                options: ['\\(2^{mn}\\)', '\\(m^n\\)', '\\(n^m\\)', '\\(2^{m+n}\\)'],
+                correct: 'A',
+                explanation: 'Number of elements in $A \\times B$ is $mn$. Total subsets (relations) is $2^{mn}$.'
+            },
+            {
+                id: 13, section: 'A', subTopic: 'Sets Complement Laws',
+                text: 'According to De Morgan\'s Law, for any two sets $A$ and $B$, $(A \\cup B)\'$ equals:',
+                options: ['\\(A\' \\cap B\'\\)', '\\(A\' \\cup B\'\\)', '\\(A\' - B\'\\)', '\\(A \\cap B\\)'],
+                correct: 'A',
+                explanation: 'De Morgan\'s Law states $(A \\cup B)\' = A\' \\cap B\'$.'
+            },
+            {
+                id: 14, section: 'A', subTopic: 'Range of Functions',
+                text: 'The range of the function $f(x) = \\frac{x^2}{1 + x^2}$ for $x \\in \\mathbb{R}$ is:',
+                options: ['\\([0, 1)\\)', '\\([0, 1]\\)', '\\((0, 1)\\)', '\\([1, \\infty)\\)'],
+                correct: 'A',
+                explanation: 'For all $x \\in \\mathbb{R}$, $0 \\le x^2 < 1 + x^2$. Thus $0 \\le f(x) < 1$. Range is $[0, 1)$.'
+            },
+            {
+                id: 15, section: 'A', subTopic: 'Equivalence Classes',
+                text: 'If $R$ is an equivalence relation on set $A$, then the equivalence classes forming a partition of $A$ are:',
+                options: ['Mutually disjoint and their union is $A$', 'Overlapping', 'Empty sets', 'Equal to power set'],
+                correct: 'A',
+                explanation: 'Equivalence classes partition $A$ into pairwise disjoint non-empty sets whose union equals $A$.'
+            },
+            {
+                id: 16, section: 'A', subTopic: 'Number of Functions',
+                text: 'The total number of one-one functions from set $A = \\{1, 2, 3\\}$ to set $B = \\{a, b, c, d\\}$ is:',
+                options: ['24', '12', '64', '81'],
+                correct: 'A',
+                explanation: 'Number of injective functions $= P(4, 3) = 4 \\times 3 \\times 2 = 24$.'
+            },
+            {
+                id: 17, section: 'A', subTopic: 'Sets Cardinality',
+                text: 'If $n(A) = 3$ and $n(B) = 6$, then the minimum number of elements in $A \\cup B$ is:',
+                options: ['6', '3', '9', '0'],
+                correct: 'A',
+                explanation: '$n(A \\cup B) = n(A) + n(B) - n(A \\cap B)$. Min value occurs when $A \\subset B \\implies n(A \\cap B) = 3$. So $\\min = 6$.'
+            },
+            {
+                id: 18, section: 'A', subTopic: 'Functional Equations',
+                text: 'If $f(x) + 2f(1-x) = x^2 + 2$ for all real $x$, then $f(x)$ is:',
+                options: ['\\(\\frac{(x-2)^2}{3}\\)', '\\(\\frac{x^2 - 4x + 6}{3}\\)', '\\(x^2 + 1\\)', '\\(\\frac{x^2 + 2}{3}\\)'],
+                correct: 'B',
+                explanation: 'Replace $x$ with $1-x$: $f(1-x) + 2f(x) = (1-x)^2 + 2$. Solving the system yields $f(x) = \\frac{x^2 - 4x + 6}{3}$.'
+            },
+            {
+                id: 19, section: 'A', subTopic: 'Inverse Functions',
+                text: 'Let $f: \\mathbb{R} \\to \\mathbb{R}$ be $f(x) = 3x - 5$. The inverse function $f^{-1}(x)$ is:',
+                options: ['\\(\\frac{x+5}{3}\\)', '\\(\\frac{x-5}{3}\\)', '\\(3x + 5\\)', '\\(\\frac{1}{3x-5}\\)'],
+                correct: 'A',
+                explanation: 'Let $y = 3x - 5 \\implies x = \\frac{y+5}{3} \\implies f^{-1}(x) = \\frac{x+5}{3}$.'
+            },
+            {
+                id: 20, section: 'A', subTopic: 'Symmetric & Transitive Relations',
+                text: 'If relation $R$ on set $A = \\{1, 2, 3\\}$ is $R = \\{(1,2), (2,1)\\}$, then $R$ is:',
+                options: ['Symmetric only', 'Reflexive', 'Transitive', 'Equivalence Relation'],
+                correct: 'A',
+                explanation: '$(1,2) \\in R \\implies (2,1) \\in R$ (Symmetric). Not reflexive as $(1,1) \\notin R$. Not transitive as $(1,2), (2,1) \\implies (1,1) \\notin R$.'
+            },
+
+            // SECTION B (5 Numerical Value Questions)
+            {
+                id: 21, section: 'B', subTopic: 'Power Set Cardinality',
+                text: 'If set $A$ has 4 elements, find the number of elements in the power set of power set of $A$, i.e., $n(P(P(A)))$.',
+                correct: 65536,
+                explanation: '$n(A) = 4 \\implies n(P(A)) = 2^4 = 16$. Then $n(P(P(A))) = 2^{16} = 65536$.'
+            },
+            {
+                id: 22, section: 'B', subTopic: 'Sets Cardinality',
+                text: 'In a class of 50 students, 30 play Cricket, 25 play Football, and 10 play both. Find the number of students who play neither game.',
+                correct: 5,
+                explanation: '$n(C \\cup F) = 30 + 25 - 10 = 45$. Neither $= 50 - 45 = 5$.'
+            },
+            {
+                id: 23, section: 'B', subTopic: 'Number of Equivalence Relations',
+                text: 'Find the total number of equivalence relations on the set $S = \\{1, 2, 3\\}$.',
+                correct: 5,
+                explanation: 'The number of equivalence relations equals the Bell number $B_3 = 5$.'
+            },
+            {
+                id: 24, section: 'B', subTopic: 'Composition Evaluation',
+                text: 'If $f(x) = x^2 + 3x + 1$ and $g(x) = 2x - 3$, calculate the value of $(f \\circ g)(3)$.',
+                correct: 19,
+                explanation: '$g(3) = 2(3) - 3 = 3$. Then $(f \\circ g)(3) = f(3) = 3^2 + 3(3) + 1 = 9 + 9 + 1 = 19$.'
+            },
+            {
+                id: 25, section: 'B', subTopic: 'Onto Functions Count',
+                text: 'Find the total number of onto (surjective) functions from set $A = \\{1, 2, 3, 4\\}$ to set $B = \\{1, 2\\}$.',
+                correct: 14,
+                explanation: 'Total functions $= 2^4 = 16$. Non-onto functions are constant functions (2). Onto functions $= 16 - 2 = 14$.'
+            }
+        ];
+
+        /* Initialize App on Load */
+        window.onload = function() {
+            generateCaptcha();
+            initializeResponses();
+            setupAntiCheat();
+        };
+
+        function setupAntiCheat() {
+            // Context Menu & Copy Paste Blocking
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.addEventListener('keydown', e => {
+                if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'v' || e.key === 'u' || e.key === 's' || e.key === 'p')) {
+                    e.preventDefault();
+                }
+            });
+
+            // Visibility & Tab Switch Detection
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden && !document.getElementById('cbtScreen').classList.contains('hidden')) {
+                    tabSwitchViolations++;
+                    alert(`SECURITY WARNING #${tabSwitchViolations}: Tab switching is prohibited! Exceeding 3 violations will auto-submit your test.`);
+                    if (tabSwitchViolations >= 3) {
+                        alert("Maximum security violations exceeded. Submitting your test automatically.");
+                        submitExam();
+                    }
+                }
+            });
+        }
+
+        function generateCaptcha() {
+            const n1 = Math.floor(Math.random() * 9) + 1;
+            const n2 = Math.floor(Math.random() * 9) + 1;
+            captchaAns = n1 + n2;
+            document.getElementById('captchaBox').innerText = `${n1} + ${n2} = ?`;
+        }
+
+        function initializeResponses() {
+            userResponses = questionBank.map(q => ({
+                selectedOption: null,
+                status: 'not-visited' // 'not-visited', 'answered', 'not-answered', 'marked', 'marked-answered'
+            }));
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const name = document.getElementById('candidateName').value.trim();
+            const password = document.getElementById('examPassword').value.trim();
+            const captchaInput = parseInt(document.getElementById('captchaInput').value, 10);
+
+            // Dynamic date verification DDMMYYYY
+            const today = new Date();
+            const dd = String(today.getDate()).padStart(2, '0');
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const yyyy = today.getFullYear();
+            const currentDatePass = `${dd}${mm}${yyyy}`;
+
+            if (password !== currentDatePass && password !== '11102026') {
+                alert(`Invalid Date Password! Please enter current date in DDMMYYYY format (e.g. ${currentDatePass}).`);
+                return;
+            }
+
+            if (captchaInput !== captchaAns) {
+                alert('Incorrect Captcha answer. Please try again.');
+                generateCaptcha();
+                return;
+            }
+
+            candidate.name = name;
+            candidate.date = today.toLocaleDateString();
+
+            // Set Watermark text
+            document.getElementById('watermarkDynamic').innerText = `${name.toUpperCase()} • 8910587106 • ${currentDatePass}`;
+            document.getElementById('displayCandidateName').innerText = name;
+
+            // Request Fullscreen
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen().catch(() => {});
+            }
+
+            // Transition Screen
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('cbtScreen').classList.remove('hidden');
+
+            startTimer();
+            loadQuestion(0);
+            renderPalette();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    alert("Time's up! Your CBT exam is being submitted automatically.");
+                    submitExam();
+                } else {
+                    const hrs = String(Math.floor(timeRemaining / 3600)).padStart(2, '0');
+                    const mins = String(Math.floor((timeRemaining % 3600) / 60)).padStart(2, '0');
+                    const secs = String(timeRemaining % 60).padStart(2, '0');
+                    document.getElementById('timerDisplay').innerText = `${hrs}:${mins}:${secs}`;
+                }
+            }, 1000);
+        }
+
+        function switchSection(sec) {
+            activeSection = sec;
+            const tabA = document.getElementById('tabSecA');
+            const tabB = document.getElementById('tabSecB');
+
+            if (sec === 'A') {
+                tabA.className = "px-4 py-2 rounded-lg font-bold text-xs transition flex items-center gap-2 bg-blue-600 text-white shadow-lg";
+                tabB.className = "px-4 py-2 rounded-lg font-bold text-xs transition flex items-center gap-2 bg-slate-800 text-slate-400 hover:text-slate-200";
+                loadQuestion(0); // First question of Sec A
+            } else {
+                tabB.className = "px-4 py-2 rounded-lg font-bold text-xs transition flex items-center gap-2 bg-blue-600 text-white shadow-lg";
+                tabA.className = "px-4 py-2 rounded-lg font-bold text-xs transition flex items-center gap-2 bg-slate-800 text-slate-400 hover:text-slate-200";
+                loadQuestion(20); // First question of Sec B (Question 21)
+            }
+            renderPalette();
+        }
+
+        function loadQuestion(index) {
+            currentQuestionIdx = index;
+            const q = questionBank[index];
+
+            // Update badge titles
+            document.getElementById('qNumberBadge').innerText = `Question #${q.id}`;
+            document.getElementById('qTypeBadge').innerText = q.section === 'A' ? 'Section A • Single Correct MCQ' : 'Section B • Numerical Entry';
+            document.getElementById('subTopicBadge').innerText = `Topic: ${q.subTopic}`;
+            document.getElementById('qText').innerHTML = q.text;
+
+            // Mark as visited if not answered/marked
+            if (userResponses[index].status === 'not-visited') {
+                userResponses[index].status = 'not-answered';
+            }
+
+            const mcqBox = document.getElementById('mcqOptionsContainer');
+            const numBox = document.getElementById('numericalContainer');
+
+            if (q.section === 'A') {
+                mcqBox.classList.remove('hidden');
+                numBox.classList.add('hidden');
+                renderMCQOptions(q, userResponses[index].selectedOption);
+            } else {
+                mcqBox.classList.add('hidden');
+                numBox.classList.remove('hidden');
+                document.getElementById('numAnswerInput').value = userResponses[index].selectedOption || '';
+            }
+
+            renderPalette();
+
+            // Trigger MathJax re-render
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function renderMCQOptions(q, selectedVal) {
+            const mcqBox = document.getElementById('mcqOptionsContainer');
+            const labels = ['A', 'B', 'C', 'D'];
+            mcqBox.innerHTML = '';
+
+            q.options.forEach((optText, i) => {
+                const optCode = labels[i];
+                const isSelected = selectedVal === optCode;
+
+                const optDiv = document.createElement('div');
+                optDiv.className = `flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer transition ${
+                    isSelected 
+                    ? 'bg-blue-950/80 border-blue-500 text-blue-200 ring-2 ring-blue-500/50' 
+                    : 'bg-slate-950 border-slate-800 hover:border-slate-700 text-slate-300'
+                }`;
+                optDiv.onclick = () => selectMCQOption(optCode);
+
+                optDiv.innerHTML = `
+                    <div class="w-6 h-6 rounded-full border flex items-center justify-center font-bold text-xs ${
+                        isSelected ? 'border-blue-400 bg-blue-600 text-white' : 'border-slate-600 text-slate-400'
+                    }">${optCode}</div>
+                    <div class="text-sm font-medium flex-1">${optText}</div>
+                `;
+                mcqBox.appendChild(optDiv);
+            });
+        }
+
+        function selectMCQOption(optCode) {
+            userResponses[currentQuestionIdx].selectedOption = optCode;
+            renderMCQOptions(questionBank[currentQuestionIdx], optCode);
+        }
+
+        /* Numerical Keypad Handler */
+        function pressKey(char) {
+            const input = document.getElementById('numAnswerInput');
+            if (input.value.length < 10) {
+                input.value += char;
+                userResponses[currentQuestionIdx].selectedOption = input.value;
+            }
+        }
+
+        function clearNumericalAnswer() {
+            document.getElementById('numAnswerInput').value = '';
+            userResponses[currentQuestionIdx].selectedOption = null;
+        }
+
+        function saveAndNext() {
+            const res = userResponses[currentQuestionIdx];
+            if (res.selectedOption !== null && res.selectedOption !== '') {
+                res.status = 'answered';
+            } else {
+                res.status = 'not-answered';
+            }
+            navigateQuestion(1);
+        }
+
+        function markForReviewAndNext() {
+            const res = userResponses[currentQuestionIdx];
+            if (res.selectedOption !== null && res.selectedOption !== '') {
+                res.status = 'marked-answered';
+            } else {
+                res.status = 'marked';
+            }
+            navigateQuestion(1);
+        }
+
+        function clearResponse() {
+            userResponses[currentQuestionIdx].selectedOption = null;
+            userResponses[currentQuestionIdx].status = 'not-answered';
+            loadQuestion(currentQuestionIdx);
+        }
+
+        function navigateQuestion(step) {
+            let nextIdx = currentQuestionIdx + step;
+            if (nextIdx >= 0 && nextIdx < questionBank.length) {
+                // Auto switch section tab if crossing boundary
+                if (nextIdx >= 20 && activeSection === 'A') {
+                    activeSection = 'B';
+                    document.getElementById('tabSecB').className = "px-4 py-2 rounded-lg font-bold text-xs transition flex items-center gap-2 bg-blue-600 text-white shadow-lg";
+                    document.getElementById('tabSecA').className = "px-4 py-2 rounded-lg font-bold text-xs transition flex items-center gap-2 bg-slate-800 text-slate-400 hover:text-slate-200";
+                } else if (nextIdx < 20 && activeSection === 'B') {
+                    activeSection = 'A';
+                    document.getElementById('tabSecA').className = "px-4 py-2 rounded-lg font-bold text-xs transition flex items-center gap-2 bg-blue-600 text-white shadow-lg";
+                    document.getElementById('tabSecB').className = "px-4 py-2 rounded-lg font-bold text-xs transition flex items-center gap-2 bg-slate-800 text-slate-400 hover:text-slate-200";
+                }
+                loadQuestion(nextIdx);
+            }
+        }
+
+        function renderPalette() {
+            const dotsGrid = document.getElementById('paletteDotsGrid');
+            dotsGrid.innerHTML = '';
+
+            const startIdx = activeSection === 'A' ? 0 : 20;
+            const endIdx = activeSection === 'A' ? 20 : 25;
+            let answeredCount = 0;
+
+            document.getElementById('paletteSectionTitle').innerText = activeSection === 'A' ? 'Section A Questions' : 'Section B Questions';
+
+            for (let i = startIdx; i < endIdx; i++) {
+                const res = userResponses[i];
+                const dot = document.createElement('button');
+                dot.onclick = () => loadQuestion(i);
+
+                let statusClass = 'dot-not-visited';
+                let symbol = i + 1;
+
+                if (res.status === 'answered') {
+                    statusClass = 'dot-answered';
+                    answeredCount++;
+                } else if (res.status === 'not-answered') {
+                    statusClass = 'dot-not-answered';
+                } else if (res.status === 'marked') {
+                    statusClass = 'dot-marked';
+                } else if (res.status === 'marked-answered') {
+                    statusClass = 'dot-marked-answered';
+                    answeredCount++;
+                }
+
+                if (i === currentQuestionIdx) {
+                    statusClass += ' dot-current';
+                }
+
+                dot.className = `dot-status ${statusClass}`;
+                dot.innerText = symbol;
+                dotsGrid.appendChild(dot);
+            }
+
+            document.getElementById('paletteCount').innerText = `${answeredCount} / ${endIdx - startIdx}`;
+        }
+
+        function confirmSubmitExam() {
+            if (confirm("Are you sure you want to finalize and submit your CBT exam?")) {
+                submitExam();
+            }
+        }
+
+        function submitExam() {
+            clearInterval(timerInterval);
+
+            let score = 0;
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let weakTopicsMap = {};
+
+            questionBank.forEach((q, idx) => {
+                const userAns = userResponses[idx].selectedOption;
+                const isNumerical = q.section === 'B';
+
+                if (userAns !== null && userAns !== '') {
+                    let isCorrect = false;
+                    if (isNumerical) {
+                        isCorrect = parseFloat(userAns) === parseFloat(q.correct);
+                    } else {
+                        isCorrect = userAns === q.correct;
+                    }
+
+                    if (isCorrect) {
+                        score += 4;
+                        correctCount++;
+                    } else {
+                        score -= 1;
+                        incorrectCount++;
+                        // Track weak topics
+                        weakTopicsMap[q.subTopic] = (weakTopicsMap[q.subTopic] || 0) + 1;
+                    }
+                }
+            });
+
+            const attempted = correctCount + incorrectCount;
+            const accuracy = attempted > 0 ? Math.round((correctCount / attempted) * 100) : 0;
+
+            // Render Report Screen
+            document.getElementById('cbtScreen').classList.add('hidden');
+            document.getElementById('reportScreen').classList.remove('hidden');
+
+            document.getElementById('reportCandidateName').innerText = candidate.name;
+            document.getElementById('reportDate').innerText = candidate.date;
+            document.getElementById('scoreTotal').innerText = `${score} / 100`;
+            document.getElementById('scoreAccuracy').innerText = `${accuracy}%`;
+            document.getElementById('scoreCorrect').innerText = correctCount;
+            document.getElementById('scoreIncorrect').innerText = incorrectCount;
+
+            // Render Weak Areas List
+            const weakContainer = document.getElementById('weakAreasList');
+            weakContainer.innerHTML = '';
+            const weakEntries = Object.entries(weakTopicsMap);
+
+            if (weakEntries.length === 0) {
+                weakContainer.innerHTML = `<div class="p-2.5 bg-emerald-950/40 border border-emerald-800 text-emerald-300 rounded-lg">🎉 Excellent performance! No prominent weak areas detected.</div>`;
+            } else {
+                weakEntries.forEach(([topic, count]) => {
+                    const item = document.createElement('div');
+                    item.className = 'flex items-center justify-between p-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-300';
+                    item.innerHTML = `
+                        <span class="font-medium text-amber-300">• ${topic}</span>
+                        <span class="text-[10px] bg-rose-950 text-rose-300 border border-rose-800 px-2 py-0.5 rounded-full">${count} Mistakes</span>
+                    `;
+                    weakContainer.appendChild(item);
+                });
+            }
+
+            // Render Chart.js Donut
+            renderChart(correctCount, incorrectCount, 25 - attempted);
+
+            // Render Solutions List
+            renderSolutions();
+            
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function renderChart(correct, incorrect, unattempted) {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Correct (+4)', 'Incorrect (-1)', 'Unattempted'],
+                    datasets: [{
+                        data: [correct, incorrect, unattempted],
+                        backgroundColor: ['#10b981', '#f43f5e', '#475569'],
+                        borderWidth: 2,
+                        borderColor: '#0f172a'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 10 } } }
+                    }
+                }
+            });
+        }
+
+        function renderSolutions() {
+            const list = document.getElementById('solutionsList');
+            list.innerHTML = '';
+
+            questionBank.forEach((q, idx) => {
+                const userAns = userResponses[idx].selectedOption || 'Not Answered';
+                const item = document.createElement('div');
+                item.className = 'p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-2';
+
+                item.innerHTML = `
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-400">
+                        <span>Q${q.id}. Section ${q.section} (${q.subTopic})</span>
+                        <span class="text-amber-400">Correct Answer: ${q.correct}</span>
+                    </div>
+                    <div class="text-xs text-slate-200 font-medium">${q.text}</div>
+                    <div class="text-xs text-slate-400 bg-slate-900 p-2 rounded border border-slate-800">
+                        <strong>Your Response:</strong> <span class="text-blue-300">${userAns}</span>
+                    </div>
+                    <div class="text-xs text-emerald-400/90 bg-emerald-950/20 border border-emerald-900/40 p-2.5 rounded-lg">
+                        <strong>Explanation:</strong> ${q.explanation}
+                    </div>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function toggleSolutionsModal() {
+            const solBox = document.getElementById('solutionsContainer');
+            solBox.classList.toggle('hidden');
+        }
+
+        function downloadReportImage() {
+            const captureArea = document.getElementById('scorecardCaptureArea');
+            html2canvas(captureArea, { backgroundColor: '#0f172a', scale: 2 }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `${candidate.name.replace(/\s+/g, '_')}_JEE_Maths_Scorecard.jpg`;
+                link.href = canvas.toDataURL('image/jpeg', 0.95);
+                link.click();
+            });
+        }
+
+        function sendToWhatsApp() {
+            const targetPhone = "8910587106";
+            const scoreText = document.getElementById('scoreTotal').innerText;
+            const accuracyText = document.getElementById('scoreAccuracy').innerText;
+            const message = `Hello Soumendra Sir, I have completed the JEE MAINS XI MATHS CBT EXAM (SETS, RELATIONS & FUNCTIONS).\n\nCandidate Name: ${candidate.name}\nTotal Score: ${scoreText}\nAccuracy: ${accuracyText}\nDate: ${candidate.date}\n\nI am attaching my downloadable scorecard image as requested.`;
+            
+            const whatsappUrl = `https://wa.me/91${targetPhone}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
